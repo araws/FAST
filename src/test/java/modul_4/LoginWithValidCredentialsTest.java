@@ -12,8 +12,7 @@ class LoginWithValidCredentialsTest extends BaseTest {
         page.navigate("https://the-internet.herokuapp.com/login");
         page.fill("#username", "tomsmith");
         page.fill("#password", "SuperSecretPassword!");
-        Locator button = page.locator("text=Login").last();
-        button.click();
+        page.click("#login button");
 
         PlaywrightAssertions.assertThat(page.locator("text=You logged into a secure area!")).isVisible();
     }
