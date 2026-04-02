@@ -1,3 +1,6 @@
+package modul_3;
+
+import common.BaseTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

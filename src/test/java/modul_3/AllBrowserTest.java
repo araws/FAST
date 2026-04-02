@@ -1,4 +1,7 @@
+package modul_3;
+
 import com.microsoft.playwright.Page;
+import common.BaseTest;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Paths;
