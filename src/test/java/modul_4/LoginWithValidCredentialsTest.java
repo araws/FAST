@@ -1,6 +1,5 @@
 package modul_4;
 
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import common.BaseTest;
 import org.junit.jupiter.api.Test;
@@ -15,5 +14,9 @@ class LoginWithValidCredentialsTest extends BaseTest {
         page.click("#login button");
 
         PlaywrightAssertions.assertThat(page.locator("text=You logged into a secure area!")).isVisible();
+
+        page.click("//i[contains(text(), 'Logout')]");
+
+        PlaywrightAssertions.assertThat(page.locator("text=You logged out of the secure area!")).isVisible();
     }
 }
