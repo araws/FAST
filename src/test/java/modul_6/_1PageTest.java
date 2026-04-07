@@ -1,4 +1,4 @@
-package madul_6;
+package modul_6;
 
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.KeyboardModifier;
