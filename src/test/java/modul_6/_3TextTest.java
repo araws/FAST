@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class _3TextTest extends BaseTest {
 
     @Test
-    void text_test(){
+    void textTest() {
         page.navigate("https://the-internet.herokuapp.com/notification_message_rendered");
 
 //        1. .innerHTML() - tags + text

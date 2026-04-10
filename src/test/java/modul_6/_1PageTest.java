@@ -12,7 +12,7 @@ import java.util.Arrays;
 class _1PageTest extends BaseTest {
 
     @Test
-    void page_test() {
+    void pageTest() {
         page.navigate("https://the-internet.herokuapp.com/login");
         page.navigate("https://the-internet.herokuapp.com/login", new Page.NavigateOptions().setTimeout(10000)); // default is 30000 ms
         page.navigate("https://the-internet.herokuapp.com/login", new Page.NavigateOptions().
