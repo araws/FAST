@@ -24,4 +24,13 @@ public class _6UploadFileTest extends BaseTest {
 
         assertThat(page.getByText("File Uploaded!")).isVisible();
     }
+
+    @Test
+    void uploadMultipleFilesTest() {
+        page.navigate("https://davidwalsh.name/demo/multiple-file-upload.php");
+        page.setInputFiles("#filesToUpload", new Path[]{
+                Paths.get("uploads/file_to_upload.txt"),
+                Paths.get("uploads/file_to_upload_1.txt")
+        });
+    }
 }
