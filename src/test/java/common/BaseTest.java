@@ -26,6 +26,12 @@ public class BaseTest {
     void beforeEach() {
         context = browser.newContext();
 
+        // START TRACING
+        context.tracing().start(new Tracing.StartOptions()
+                .setScreenshots(true)
+                .setSnapshots(true)
+                .setSources(true));
+
         // VIDEO RECORDING FROM TEST
 //        context = browser.newContext(new Browser.NewContextOptions()
 //                .setViewportSize(1920, 1080)
@@ -37,6 +43,7 @@ public class BaseTest {
 
     @AfterEach
     void afterEach() {
+        context.tracing().stop(new Tracing.StopOptions().setPath(Paths.get("traces/trace.zip")));
         context.close();
     }
 
