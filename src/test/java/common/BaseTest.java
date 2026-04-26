@@ -2,12 +2,12 @@ package common;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.RecordVideoSize;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.*;
+import utils.StringUtils;
 
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class BaseTest {
 
@@ -42,8 +42,13 @@ public class BaseTest {
     }
 
     @AfterEach
-    void afterEach() {
-        context.tracing().stop(new Tracing.StopOptions().setPath(Paths.get("traces/trace.zip")));
+    void afterEach(TestInfo testInfo) {
+        String traceName = "traces/trace_"
+                + StringUtils.removeRoundBrackets(testInfo.getDisplayName())
+                + "_" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"))
+                + ".zip";
+
+        context.tracing().stop(new Tracing.StopOptions().setPath(Paths.get(traceName)));
         context.close();
     }
 

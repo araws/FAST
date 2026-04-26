@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 public class _10TracingTest extends BaseTest {
 
+    // Terminal mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args=”show-trace traces/trace.zip”
+
     @Test
     void traceDemoTest() {
         page.navigate("https://the-internet.herokuapp.com/");
