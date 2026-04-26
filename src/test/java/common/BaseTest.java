@@ -1,10 +1,13 @@
 package common;
 
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.RecordVideoSize;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+
+import java.nio.file.Paths;
 
 public class BaseTest {
 
@@ -21,7 +24,14 @@ public class BaseTest {
 
     @BeforeEach
     void beforeEach() {
-        context = browser.newContext();
+//        context = browser.newContext();
+
+        // VIDEO RECORDING FROM TEST
+        context = browser.newContext(new Browser.NewContextOptions()
+                .setViewportSize(1920, 1080)
+                .setRecordVideoDir(Paths.get("videos/"))
+                .setRecordVideoSize(new RecordVideoSize(1920, 1080)));
+
         page = context.newPage();
     }
 
