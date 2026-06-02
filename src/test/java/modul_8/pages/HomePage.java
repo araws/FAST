@@ -1,20 +1,15 @@
 package modul_8.pages;
 
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.AriaRole;
+import lombok.Getter;
+import modul_8.pages.sections.TopMenuSection;
 
 public class HomePage {
 
-    private Page page;
-    private Locator contactUsLink;
+    @Getter
+    private TopMenuSection topMenuSection;
 
     public HomePage(Page page) {
-        this.page = page;
-        this.contactUsLink = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Contact us"));
-    }
-
-    public void clickAtContactUsLink() {
-        contactUsLink.click();
+        this.topMenuSection = new TopMenuSection(page);
     }
 }

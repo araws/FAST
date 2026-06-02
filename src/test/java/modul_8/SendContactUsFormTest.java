@@ -16,9 +16,9 @@ public class SendContactUsFormTest extends BaseTest {
         HomePage homePage = new HomePage(page);
         ContactUsPage contactUsPage = new ContactUsPage(page);
 
-        homePage.clickAtContactUsLink();
-        contactUsPage.clickAtSendButton();
+        homePage.getTopMenuSection().clickAtContactUsLink();
+        contactUsPage.getContactUsFormSection().clickAtSendButton();
 
-        assertThat(contactUsPage.getErrorMessage()).isVisible();
+        assertThat(contactUsPage.getContactUsFormSection().getErrorMessage()).isVisible();
     }
 }

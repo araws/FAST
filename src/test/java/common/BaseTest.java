@@ -44,7 +44,7 @@ public class BaseTest {
 
         page = context.newPage();
     }
-
+  
     @AfterEach
     void afterEach(TestInfo testInfo) {
         String traceName = "traces/trace_"
