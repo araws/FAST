@@ -4,12 +4,13 @@ import com.microsoft.playwright.Page;
 import lombok.Getter;
 import modul_8.pages.sections.TopMenuSection;
 
-public class HomePage {
+public class HomePage extends BasePage{
 
     @Getter
-    private TopMenuSection topMenuSection;
+    private final TopMenuSection topMenuSection;
 
     public HomePage(Page page) {
+        super(page);
         this.topMenuSection = new TopMenuSection(page);
     }
 }

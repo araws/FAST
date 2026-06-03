@@ -14,9 +14,8 @@ public class SendContactUsFormTest extends BaseTest {
         page.navigate("http://automationpractice.co.pl");
 
         HomePage homePage = new HomePage(page);
-        ContactUsPage contactUsPage = new ContactUsPage(page);
 
-        homePage.getTopMenuSection().clickAtContactUsLink();
+        ContactUsPage contactUsPage = homePage.getTopMenuSection().clickAtContactUsLink();
         contactUsPage.getContactUsFormSection().clickAtSendButton();
 
         assertThat(contactUsPage.getContactUsFormSection().getErrorMessage()).isVisible();
