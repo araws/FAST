@@ -1,7 +1,6 @@
 package common;
 
 import com.microsoft.playwright.*;
-import com.microsoft.playwright.options.RecordVideoSize;
 import org.junit.jupiter.api.*;
 import utils.StringUtils;
 
@@ -23,7 +22,7 @@ public class BaseTest {
     }
 
     @BeforeEach
-    void beforeEach() {
+    void beforeEachBase() {
 //        context = browser.newContext();
 
         // BASIC AUTH
@@ -44,7 +43,7 @@ public class BaseTest {
 
         page = context.newPage();
     }
-  
+
     @AfterEach
     void afterEach(TestInfo testInfo) {
         String traceName = "traces/trace_"
