@@ -1,6 +1,7 @@
 package modul_8;
 
 import common.BaseTest;
+import modul_8.dto.ContactUsDTO;
 import modul_8.pages.ContactUsPage;
 import modul_8.pages.HomePage;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,13 +30,7 @@ public class SendContactUsFormTest extends BaseTest {
     @Test
     void should_fill_and_send_contact_us_form_test() {
         ContactUsPage contactUsPage = homePage.getTopMenuSection().clickAtContactUsLink();
-
-        contactUsPage.getContactUsFormSection().selectSubjectHeading("Webmaster")
-                .enterEmailAddress("demo@demo.com")
-                .enterOrderReference("12345")
-                .selectFileToUpload("uploads/file_to_upload.txt")
-                .enterMessage("test message")
-                .clickOnSendMessageButton();
+        contactUsPage.getContactUsFormSection().sentContactUsForm(ContactUsDTO.getDefaultContactUsDTO());
 
         assertThat(contactUsPage.getContactUsFormSection().getConfirmationMessage()).isVisible();
     }

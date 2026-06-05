@@ -4,6 +4,8 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 import lombok.Getter;
+import lombok.NonNull;
+import modul_8.dto.ContactUsDTO;
 import modul_8.pages.BasePage;
 
 import java.nio.file.Paths;
@@ -32,33 +34,41 @@ public class ContactUsFormSection extends BasePage {
         this.confirmationMessage = page.getByText("Your message has been successfully sent to our team.");
     }
 
-    public ContactUsFormSection clickOnSendMessageButton() {
+    public void clickOnSendMessageButton() {
         sendMessageButton.click();
-        return this;
     }
 
-    public ContactUsFormSection selectSubjectHeading(String option) {
+    private ContactUsFormSection selectSubjectHeading(String option) {
         subjectHeading.selectOption(option);
         return this;
     }
 
-    public ContactUsFormSection enterEmailAddress(String email) {
+    private ContactUsFormSection enterEmailAddress(String email) {
         emailAddressInput.fill(email);
         return this;
     }
 
-    public ContactUsFormSection enterOrderReference(String orderReference) {
+    private ContactUsFormSection enterOrderReference(String orderReference) {
         orderReferenceInput.fill(orderReference);
         return this;
     }
 
-    public ContactUsFormSection selectFileToUpload(String filePath) {
+    private ContactUsFormSection selectFileToUpload(String filePath) {
         fileUploadInput.setInputFiles(Paths.get(filePath));
         return this;
     }
 
-    public ContactUsFormSection enterMessage(String message) {
+    private ContactUsFormSection enterMessage(String message) {
         messageText.fill(message);
         return this;
+    }
+
+    public void sentContactUsForm(@NonNull ContactUsDTO contactUsDTO) {
+        selectSubjectHeading(contactUsDTO.getSubjectHeading())
+                .enterEmailAddress(contactUsDTO.getEmailAddress())
+                .enterOrderReference(contactUsDTO.getOrderReference())
+                .selectFileToUpload(contactUsDTO.getFileToUpload())
+                .enterMessage(contactUsDTO.getMessage())
+                .clickOnSendMessageButton();
     }
 }
